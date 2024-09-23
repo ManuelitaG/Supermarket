@@ -1,0 +1,40 @@
+﻿@model Administrador
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Crear Administrador</h1>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+
+        <label class="form-label">Nombres</label>
+        <input type="text" class="form-control" asp-for="Name"> </input>
+        <span asp-asp-validation-for="Name" class="text-danger"> </span>
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">Apellidos</label>
+        <input type="text" class="form-control" asp-for="LastName"> </input>
+        <span asp-asp-validation-for="LastName" class="text-danger"> </span>
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">Edad</label>
+        <input type="text" class="form-control" asp-for="Age"> </input>
+        <span asp-asp-validation-for="Age" class="text-danger"> </span>
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">Salario</label>
+        <input type="text" class="form-control" asp-for="salary"> </input>
+        <span asp-asp-validation-for="salary" class="text-danger"> </span>
+    </div>
+
+    <button class="btn btn-primary">Guardar</button>
+
+</form>
+

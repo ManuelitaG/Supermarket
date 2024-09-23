@@ -1,0 +1,84 @@
+﻿@model List<Administrador>
+@{
+    ViewData["Title"] = "Administrador";
+}
+
+<h1>Administrador</h1>
+
+<a class="btn btn-primary" asp-action="Create">+ Nuevo autor</a>
+
+<table class="table table-bordered mt-3">
+
+    <thead>
+        <tr>
+            @{
+                /*Crear una fila con 5 columnas*/
+            }
+            <th>Cédula</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Edad</th>
+            <th>Sueldo</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (Administrador administrador in Model)
+        {
+            <tr>
+                <td>@administrador.Cedula</td>
+                <td>@administrador.Name</td>
+                <td>@administrador.LastName</td>
+                <td>@administrador.Age</td>
+                <td>@administrador.salary</td>
+                <td>
+                    <a class="btn btn-warning " asp-action="Edit" asp-route-id="@administrador.Cedula">Editar</a>
+
+                    <form asp-action="Delete" asp-route-id="@administrador.Cedula" method="post" style="display: contents;">
+                        <button class="btn btn-danger btnDelete">Eliminar</button>
+                        </form>
+
+                </td>
+            </tr>
+        }@{
+            /*CIERRE DEL FOREACH*/
+        }
+
+    </tbody>
+    @section Scripts {
+        <script>
+
+            $(document).ready(function(){
+
+                $('.btnDelete').click(function(event){
+
+                    event.preventDefault();
+
+                   Swal.fire({
+                  title: "¿Estas seguro de eliminar el administrador?",
+                  text: "No podras revertir este cambio",
+                  icon: "question",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Si, eliminar",
+                  cancelButtonText: "No, eliminar"
+
+                }).then((result) => {
+
+                  if (result.isConfirmed) {
+
+                      const deleteForm = $(this).closest('form');
+                      deleteForm.submit();
+
+                  }
+
+                });
+
+                })
+
+            })
+
+        </script>
+    }
+
